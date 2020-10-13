@@ -1,0 +1,179 @@
+@import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+$myColor: yellow;
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+// Create scrollable content
+header,
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-basis: 50px;
+
+    /* ie10 */
+    display: -ms-flexbox;
+    -ms-flex-align: center;
+    -ms-flex-line-pack: distribute;
+    -ms-flex-preferred-size: 50px;
+}
+
+header {
+    background: repeating-linear-gradient(-45deg, #FFEC8D, #FFEC8D 20px, #FFE376 20px, #FFE376 40px);
+}
+
+section {
+    background: url('images/section-bg.png') repeat;
+}
+
+footer {
+    margin-top: auto;
+    background: url('images/footer-bg.png') repeat, linear-gradient(to top, #A3D8E6, #7EC9DC);
+
+    .copyright {
+        color: white;
+    }
+}
+
+.main-content {
+    padding: 3rem 0;
+
+    .container {
+        max-width: 1050px;
+    }
+}
+
+// Wave BG Pattern
+.wave-bg {
+    position: relative;
+    min-height: 180px;
+
+    &--top::before,
+    &--top::after,
+    &--bottom::before,
+    &--bottom::after {
+        position: absolute;
+        left: 0;
+        right: 0;
+        background-repeat: repeat-x;
+        content: '';
+    }
+
+    &--top {
+
+        &::before,
+        &::after {
+            bottom: 0;
+        }
+
+        &::before {
+            height: 10px;
+            background-size: 20px 20px;
+            background-image: radial-gradient(circle at 10px -5px, transparent 12px, #81C9A4 13px);
+        }
+
+        &::after {
+            height: 15px;
+            background-size: 40px 20px;
+            background-image: radial-gradient(circle at 10px 15px, #81C9A4 12px, transparent 13px);
+        }
+    }
+
+    &--bottom {
+
+        &::before,
+        &::after {
+            top: 0;
+        }
+
+        &::before {
+            height: 10px;
+            background-size: 20px 20px;
+            background-image: radial-gradient(circle at 10px 15px, transparent 12px, #81C9A4 13px);
+        }
+
+        &::after {
+            height: 15px;
+            background-size: 40px 20px;
+            background-image: radial-gradient(circle at 10px 0px, #81C9A4 12px, transparent 13px);
+        }
+    }
+}
+
+// Buttons
+.btn-primary {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: rgba(0, 0, 0, 0);
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+        border-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+// Spacing
+.mb-6 {
+    margin-bottom: 4rem;
+}
+
+// Media Queries
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    .category-card {
+        height: 200px;
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    .category-card {
+        height: 250px;
+    }
+}
+
+// Typography
+h1 {
+    color: $myColor;
+}
+
+// Search Input
+.custom-input {
+    &__inner {
+        position: relative;
+        margin-bottom: 1.5rem;
+        padding: .5rem;
+        border-radius: 10px;
+        background-color: rgba(0, 129, 96, 0.3);
+
+        &__input {
+            border: 2px solid rgba(107, 92, 67, .4);
+            font-family: 'Zilla Slab', serif;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: .2px;
+            color: #6b5c43;
+            transition: border-color ease-in-out .2s;
+
+            &:focus {
+                border: 2px solid rgba(107, 92, 67, 1);
+                box-shadow: none;
+                outline: none;
+                color: #6b5c43;
+            }
+        }
+    }
+}

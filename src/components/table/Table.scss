@@ -1,0 +1,142 @@
+.table {
+    box-sizing: border-box;
+    margin: 0px;
+    min-width: 0px;
+    flex-wrap: wrap;
+    display: flex;
+
+    &__item {
+        box-sizing: border-box;
+        margin: 0px -1px -1px 0px;
+        min-width: 0px;
+        flex: 1 1 25%;
+        border: 1px solid #007d75;
+        padding: 4px;
+        position: relative;
+        background: #e5ffe6;
+    }
+
+    &__item__inner {
+        box-sizing: border-box;
+        margin: 0px;
+        min-width: 0px;
+        border-radius: 5px;
+        font-size: 14px;
+        font-style: italic;
+        font-weight: 700;
+        text-align: center;
+        opacity: 0.5;
+
+        &.available {
+            box-sizing: border-box;
+            margin: 0px;
+            min-width: 0px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-style: italic;
+            font-weight: 700;
+            text-align: center;
+            background-color: rgb(184, 210, 82);
+            opacity: 1;
+        }
+    }
+}
+
+.custom-table {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Libre Franklin', sans-serif;
+
+    &__image {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: rgba(0, 129, 96, 0.3);
+
+        &:before {
+            bottom: 11px;
+            left: 11px;
+            position: absolute;
+            right: 11px;
+            top: 11px;
+            background-color: #f8f8f0;
+            border-radius: 50%;
+            content: "";
+        }
+
+        img {
+            position: absolute;
+            padding: 10px;
+            width: 50px;
+            top: 5px;
+            left: 5px;
+            background-color: #FFFFFF;
+            border-radius: 50%;
+        }
+    }
+
+    input {
+        font-family: 'Libre Franklin', sans-serif;
+    }
+
+    tbody td {
+        border-color: rgba(0, 129, 96, 0.3);
+    }
+
+    .MuiTablePagination-root:last-child {
+        border: none;
+    }
+
+    .MuiToolbar-regular {
+        padding: 0 1rem;
+
+        h6 {
+            margin-top: 6px;
+        }
+
+        h6,
+        .MuiFormControl-root {
+            padding: 1rem;
+            color: #007d75;
+            box-sizing: border-box;
+            min-width: 0px;
+            position: relative;
+            white-space: nowrap;
+            background-color: #f9f6e5;
+            box-shadow: rgba(0, 0, 0, 0.2) -2px 2px 3px 0px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: capitalize;
+        }
+    }
+
+    .MuiPaper-root {
+        background: transparent;
+        box-shadow: none;
+        border: none;
+    }
+
+    >.MuiPaper-root>div:last-of-type {
+        padding: 1rem;
+        background-color: rgba(0, 129, 96, 0.3);
+        border-radius: 10px;
+
+        >div {
+            background-color: #e5ffe6;
+
+        }
+
+        thead tr th {
+            font-family: 'Zilla Slab', serif;
+            font-size: 16px;
+            font-weight: 800;
+            color: #007d75;
+        }
+    }
+
+    .MuiTableRow-root.MuiTableRow-hover:hover {
+        background-color: rgba(0, 129, 96, 0.3);
+    }
+}

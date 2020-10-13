@@ -1,0 +1,154 @@
+.modal {
+    &-content {
+        border-radius: 10px;
+    }
+
+    &__header {
+        width: 100%;
+        border-bottom: 0;
+        align-self: center;
+        justify-content: center;
+
+        .close {
+            position: absolute;
+            right: 1.5rem;
+            color: #007d75;
+            font-size: 3rem;
+        }
+    }
+
+    &__title {
+        margin-top: .5rem;
+        padding: 1rem;
+        color: #007d75;
+        box-sizing: border-box;
+        min-width: 0px;
+        position: relative;
+        z-index: 1;
+        white-space: nowrap;
+        background-color: rgb(249, 246, 229);
+        box-shadow: rgba(0, 0, 0, 0.2) -2px 2px 3px 0px;
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: capitalize;
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem 3rem;
+
+        &__image {
+            height: 100px;
+            align-self: center;
+
+            &__inner {
+                height: 100%;
+            }
+
+            &--lg {
+                height: 300px;
+                border-radius: 4px;
+            }
+        }
+
+        &__inner {
+
+
+            p {
+                margin-bottom: 0;
+                padding: 2rem;
+                opacity: 1;
+                transform: translate(0, 0);
+                transition: transform 0.4s ease, opacity 0.4s ease;
+
+                +p {
+                    margin-bottom: 1rem;
+                }
+
+                img.gender {
+                    opacity: .6;
+                }
+            }
+
+            section {
+                background: none;
+
+                +section {
+                    margin-top: 1rem;
+                }
+
+                h2 {
+                    display: inline-block;
+                    margin-top: 1rem;
+                    margin-bottom: 1.5rem;
+                    padding: .5rem;
+                    color: #007d75;
+                    box-sizing: border-box;
+                    min-width: 0px;
+                    position: relative;
+                    z-index: 1;
+                    white-space: nowrap;
+                    background-color: rgb(249, 246, 229);
+                    box-shadow: rgba(0, 0, 0, 0.2) -2px 2px 3px 0px;
+                    font-size: 16px;
+                    font-weight: 700;
+                    text-transform: capitalize;
+                }
+
+
+                &.info {
+                    p {
+                        padding: 0;
+                        font-family: 'Zilla Slab', serif;
+                        font-size: 18px;
+                        font-weight: 600;
+                        color: #6b5c43;
+                        text-transform: capitalize;
+                    }
+                }
+            }
+
+            .museum-phrase,
+            .saying {
+                position: relative;
+                margin-top: 2rem;
+                border-radius: 10px;
+                background-color: rgba(0, 129, 96, 0.3);
+
+                &:before {
+                    bottom: 11px;
+                    left: 11px;
+                    position: absolute;
+                    right: 11px;
+                    top: 11px;
+                    background-color: #f8f8f0;
+                    content: "";
+                }
+            }
+        }
+    }
+
+    &__footer {}
+
+    &.fish,
+    &.seacreature {
+        .modal-content {
+            background: url("./images/footer-bg.png") repeat, linear-gradient(to top, #A3D8E6, #7EC9DC);
+        }
+    }
+
+    &.bug,
+    &.fossil {
+        .modal-content {
+            background: url("./images/section-bg.png") repeat, linear-gradient(to top, #A3D8E6, #7EC9DC);
+        }
+    }
+}
+
+
+@media(max-width: 555px) {
+    .modal__body {
+        padding: 1.5rem;
+    }
+}
