@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import '../../App.scss';
-import './Search.scss';
 
 // 3rd Party Imports
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Col, Form } from "react-bootstrap";
 
 function Search(props) {
     return (

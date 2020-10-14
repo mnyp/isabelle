@@ -1,7 +1,6 @@
 @import "../../sass/main.scss";
 
-.welcome-container,
-.welcome-sidebar {
+.error-container {
     @include bg-green-opacity-3;
     position: relative;
     margin-top: 2rem;
@@ -23,12 +22,5 @@
         padding: 2rem;
         opacity: 1;
         transform: translate(0, 0);
-    }
-}
-
-.welcome-container {
-    &__inner img {
-        width: 150px;
-        border-radius: 10px;
     }
 }

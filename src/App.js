@@ -14,6 +14,7 @@ import Fish from './components/category/fish/Fish';
 import Bug from './components/category/bug/Bug';
 import SeaCreatures from './components/category/seacreature/SeaCreature';
 import Fossils from './components/category/fossil/Fossil';
+import Error from './components/error/Error';
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
               <Route path="/bugs" component={Bug} exact />
               <Route path="/seacreatures" component={SeaCreatures} exact />
               <Route path="/fossils" component={Fossils} exact />
-              {/* <Route component={Error} /> */}
+              <Route component={Error} />
             </Switch>
           </div>
         </div>

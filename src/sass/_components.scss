@@ -1,3 +1,86 @@
+@import "./base";
+
+// Buttons
+.btn-primary {
+    @include bg-br-opacity-3;
+
+    &:hover {
+        background-color: $brOpacityBlack5;
+        border-color: $brOpacityBlack5;
+    }
+}
+
+// Search Input
+.custom-input {
+    &__inner {
+        @include bg-green-opacity-3;
+        position: relative;
+        margin-bottom: 1.5rem;
+        padding: .5rem;
+        border-radius: 10px;
+
+        &__input {
+            @include zilla-font;
+            border: 2px solid rgba(107, 92, 67, .4);
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: .2px;
+            color: $primaryBeige;
+            transition: border-color ease-in-out .2s;
+
+            &:focus {
+                border: 2px solid rgba(107, 92, 67, 1);
+                box-shadow: none;
+                outline: none;
+                color: $primaryBeige;
+            }
+        }
+    }
+}
+
+
+// List
+.custom-list {
+    display: flex;
+    margin-bottom: 0;
+    padding: 0;
+    flex-direction: column;
+
+    &__link {
+        display: flex;
+        list-style: none;
+        margin-top: .2rem;
+
+        &:before {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background-image: url("../images/modal-icons/bells.png");
+            background-size: cover;
+            content: "";
+        }
+
+        &__anchor {
+            @include zilla-font;
+            width: 95%;
+            margin-bottom: 0;
+            margin-left: .3rem;
+            font-size: 18px;
+            font-weight: 600;
+            color: $primaryBeige;
+            text-transform: capitalize;
+            transition: font-weight ease-in-out .2s;
+
+            &:hover:not(p) {
+                color: $primaryBeige;
+                font-weight: 800;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+// Modal
 .modal {
     &-content {
         border-radius: 10px;
@@ -12,22 +95,21 @@
         .close {
             position: absolute;
             right: 1.5rem;
-            color: #007d75;
+            color: $primaryGreen;
             font-size: 3rem;
         }
     }
 
     &__title {
+        @include box-shadow;
         margin-top: .5rem;
         padding: 1rem;
-        color: #007d75;
+        color: $primaryGreen;
         box-sizing: border-box;
         min-width: 0px;
         position: relative;
-        z-index: 1;
         white-space: nowrap;
         background-color: rgb(249, 246, 229);
-        box-shadow: rgba(0, 0, 0, 0.2) -2px 2px 3px 0px;
         font-size: 16px;
         font-weight: 700;
         text-transform: capitalize;
@@ -53,14 +135,12 @@
         }
 
         &__inner {
-
-
             p {
+                @include transition-ease-opacity-4;
                 margin-bottom: 0;
                 padding: 2rem;
                 opacity: 1;
                 transform: translate(0, 0);
-                transition: transform 0.4s ease, opacity 0.4s ease;
 
                 +p {
                     margin-bottom: 1rem;
@@ -79,31 +159,30 @@
                 }
 
                 h2 {
+                    @include box-shadow;
                     display: inline-block;
                     margin-top: 1rem;
                     margin-bottom: 1.5rem;
                     padding: .5rem;
-                    color: #007d75;
+                    color: $primaryGreen;
                     box-sizing: border-box;
                     min-width: 0px;
                     position: relative;
                     z-index: 1;
                     white-space: nowrap;
                     background-color: rgb(249, 246, 229);
-                    box-shadow: rgba(0, 0, 0, 0.2) -2px 2px 3px 0px;
                     font-size: 16px;
                     font-weight: 700;
                     text-transform: capitalize;
                 }
 
-
                 &.info {
                     p {
+                        @include zilla-font;
                         padding: 0;
-                        font-family: 'Zilla Slab', serif;
                         font-size: 18px;
                         font-weight: 600;
-                        color: #6b5c43;
+                        color: $primaryBeige;
                         text-transform: capitalize;
                     }
                 }
@@ -111,10 +190,10 @@
 
             .museum-phrase,
             .saying {
+                @include bg-green-opacity-3;
                 position: relative;
                 margin-top: 2rem;
                 border-radius: 10px;
-                background-color: rgba(0, 129, 96, 0.3);
 
                 &:before {
                     bottom: 11px;
@@ -122,26 +201,24 @@
                     position: absolute;
                     right: 11px;
                     top: 11px;
-                    background-color: #f8f8f0;
+                    background-color: $primaryOffWhite;
                     content: "";
                 }
             }
         }
     }
 
-    &__footer {}
-
     &.fish,
     &.seacreature {
         .modal-content {
-            background: url("./images/footer-bg.png") repeat, linear-gradient(to top, #A3D8E6, #7EC9DC);
+            background: url("../images/footer-bg.png") repeat, linear-gradient(to top, #A3D8E6, #7EC9DC);
         }
     }
 
     &.bug,
     &.fossil {
         .modal-content {
-            background: url("./images/section-bg.png") repeat, linear-gradient(to top, #A3D8E6, #7EC9DC);
+            background: url("../images/section-bg.png") repeat, linear-gradient(to top, #A3D8E6, #7EC9DC);
         }
     }
 }

@@ -1,3 +1,5 @@
+@import "../../sass/main.scss";
+
 .grid-container {
     position: relative;
     display: flex;
@@ -6,13 +8,12 @@
 }
 
 .grid {
+    display: flex;
     box-sizing: border-box;
     margin: 0px;
     min-width: 0px;
     flex-direction: column;
-    display: flex;
     flex-wrap: wrap;
-    display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
 
@@ -21,7 +22,7 @@
         margin: 0px;
         min-width: 0px;
         position: relative;
-        border: 1px solid #6b5c43;
+        border: 1px solid $primaryBeige;
         width: 75px;
         height: 75px;
         padding: 8px;
@@ -31,7 +32,7 @@
         justify-content: center;
         cursor: pointer;
         display: flex;
-        background-image: url('../../images/grid-bg.jpg');
+        background-image: url("../../images/grid-bg.jpg");
         -ms-flex: auto;
         position: relative;
         padding: 10px;
@@ -41,20 +42,19 @@
             text-transform: capitalize;
 
             >.tooltip-inner {
+                @include box-shadow;
                 margin-top: .5rem;
                 margin-bottom: 1.5rem;
                 padding: 1rem;
                 color: #343434;
                 min-width: 0px;
                 position: relative;
-                background-color: #f9f6e5;
-                box-shadow: rgba(0, 0, 0, 0.2) -2px 2px 3px 0px;
+                background-color: $boxBg;
                 border-radius: 20px;
                 font-size: 16px;
-                // font-weight: 700;
                 text-align: l;
                 text-transform: capitalize;
-                border: 4px solid rgba(0, 129, 96, 1);
+                border: 4px solid $brOpacityGreen;
             }
 
 
@@ -62,7 +62,7 @@
                 >.arrow:before {
                     top: -24px;
                     border-width: .6rem;
-                    border-top-color: rgba(0, 129, 96, 1);
+                    border-top-color: $brOpacityGreen;
                 }
             }
 
@@ -70,7 +70,7 @@
                 >.arrow:before {
                     top: -5px;
                     border-width: .6rem;
-                    border-right-color: rgba(0, 129, 96, 1);
+                    border-right-color: $brOpacityGreen;
                 }
 
             }
@@ -96,7 +96,7 @@
 
 @media(max-width: 1333px) {
     .grid__item {
-        flex-basis: 33.33%;
+        flex-basis: 20%;
     }
 }
 

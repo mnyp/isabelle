@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
 import '../../App.scss';
-import '../../Modal.scss';
 import '../table/Table.scss';
 import './Grid.scss';
 
@@ -11,9 +10,6 @@ import flickImg from '../../images/modal-icons/flick.png';
 
 // 3rd Party Imports
 import { Tooltip, OverlayTrigger, Modal, Button, Form, Row, Col } from "react-bootstrap";
-
-// Axios
-// import axios from axios;
 
 function Grid(props) {
     // Modal Events

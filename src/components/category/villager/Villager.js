@@ -1,13 +1,10 @@
 import React, { Fragment, useEffect, useState } from "react";
 import '../../../App.scss';
-import './Villager.scss';
 
 // Third Party Imports
 import { Modal, OverlayTrigger, Tooltip, Row, Col } from "react-bootstrap";
 
 // Components
-import Search from '../../search/Search';
-import Grid from '../../grid/Grid';
 import Table from '../../table/Table';
 import FemaleIcon from '../../../images/modal-icons/gender-female.png';
 import MaleIcon from '../../../images/modal-icons/gender-male.png';
@@ -30,7 +27,7 @@ function Villagers(props) {
     const [villagers, setVillagers] = useState([]);
     const [url, setUrl] = useState("https://acnhapi.com/v1a/villagers/");
     const [searchTerm, setSearchTerm] = useState("");
-    const [location, setLocation] = useState([]);
+    // const [location, setLocation] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
 

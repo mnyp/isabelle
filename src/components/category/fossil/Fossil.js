@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
 import '../../../App.scss';
-import './Fossil.scss';
 
 // Components
 import Search from '../../search/Search';
@@ -9,20 +8,16 @@ import Grid from '../../grid/Grid';
 // Axios
 const axios = require('axios');
 
-function Fossils(props) {
+function Fossils() {
     // States
     const [fossils, setFossils] = useState([]);
     const [url, setUrl] = useState("https://acnhapi.com/v1a/fossils/");
     const [searchTerm, setSearchTerm] = useState("");
-    const [location, setLocation] = useState([]);
+    // const [location, setLocation] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
 
     // Handle Events
-    const handleLocationChange = (event) => {
-        setLocation(event.target.value);
-    }
-    
     const handleSearch = (event) => {
         setSearchTerm(event.target.value);
     }

@@ -1,0 +1,59 @@
+$primaryGreen: #007d75;
+$primaryRed: #FF1A2C;
+$primaryBeige: #6b5c43;
+$primaryOffWhite: #f8f8f0;
+$primaryWhite: #FFFFFF;
+$tableBg: #e5ffe6;
+$boxBg: #f9f6e5;
+$brOpacityGreen: rgba(0, 129, 96, 1);
+$brOpacityBlack5: rgba(0, 0, 0, 0.5);
+
+@mixin zilla-font {
+    font-family: "Zilla Slab", serif;
+}
+
+@mixin libre-font {
+    font-family: "Libre Franklin", sans-serif;
+}
+
+@mixin box-shadow {
+    box-shadow: rgba(0, 0, 0, 0.2) -2px 2px 3px 0px;
+}
+
+@mixin bell-list {
+    background-image: radial-gradient(circle at 10px 0px, #81C9A4 12px, transparent 13px);
+}
+
+@mixin bg-br-opacity-3 {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: rgba(0, 0, 0, 0.3);
+}
+
+@mixin bg-green-opacity-3 {
+    background-color: rgba(0, 129, 96, 0.3);
+}
+
+@mixin transition-ease-opacity-4 {
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+// Spacing
+.mb-6 {
+    margin-bottom: 4rem;
+}
+
+// Typography
+h1 {
+    text-transform: capitalize;
+    font-family: "Zilla Slab", serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: $primaryBeige;
+}
+
+h3 {
+    color: $primaryGreen;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: capitalize;
+}

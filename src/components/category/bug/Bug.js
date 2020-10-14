@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
 import '../../../App.scss';
-import './Bug.scss';
 
 // Components
 import Search from '../../search/Search';
@@ -9,10 +8,10 @@ import Grid from '../../grid/Grid';
 // Axios
 const axios = require('axios');
 
-function Bug(props) {
+function Bug() {
     // States
     const [bugs, setBugs] = useState([]);
-    const [url] = useState("https://acnhapi.com/v1a/bugs");
+    const [url] = useState("https://acnhapi.com/v1a/bugs/");
     const [searchTerm, setSearchTerm] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
@@ -28,7 +27,7 @@ function Bug(props) {
         setIsLoading(true);
 
         try {
-            const result = await axios(url);
+            const result = await axios(url + searchTerm);
             setBugs(result.data);
         } catch (error) {
             setIsError(true);

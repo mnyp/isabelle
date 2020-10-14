@@ -1,3 +1,5 @@
+@import "../../sass/main.scss";
+
 .table {
     box-sizing: border-box;
     margin: 0px;
@@ -10,10 +12,10 @@
         margin: 0px -1px -1px 0px;
         min-width: 0px;
         flex: 1 1 25%;
-        border: 1px solid #007d75;
+        border: 1px solid $primaryGreen;
         padding: 4px;
         position: relative;
-        background: #e5ffe6;
+        background: $tableBg;
     }
 
     &__item__inner {
@@ -43,17 +45,17 @@
 }
 
 .custom-table {
+    @include libre-font;
     width: 100%;
     font-size: 14px;
     font-weight: 600;
-    font-family: 'Libre Franklin', sans-serif;
 
     &__image {
+        @include bg-green-opacity-3;
         position: relative;
         width: 60px;
         height: 60px;
         border-radius: 50%;
-        background-color: rgba(0, 129, 96, 0.3);
 
         &:before {
             bottom: 11px;
@@ -61,7 +63,7 @@
             position: absolute;
             right: 11px;
             top: 11px;
-            background-color: #f8f8f0;
+            background-color: $primaryOffWhite;
             border-radius: 50%;
             content: "";
         }
@@ -72,13 +74,13 @@
             width: 50px;
             top: 5px;
             left: 5px;
-            background-color: #FFFFFF;
+            background-color: $primaryWhite;
             border-radius: 50%;
         }
     }
 
     input {
-        font-family: 'Libre Franklin', sans-serif;
+        @include libre-font;
     }
 
     tbody td {
@@ -98,14 +100,14 @@
 
         h6,
         .MuiFormControl-root {
+            @include box-shadow;
             padding: 1rem;
-            color: #007d75;
+            color: $primaryGreen;
             box-sizing: border-box;
             min-width: 0px;
             position: relative;
             white-space: nowrap;
-            background-color: #f9f6e5;
-            box-shadow: rgba(0, 0, 0, 0.2) -2px 2px 3px 0px;
+            background-color: $boxBg;
             font-size: 16px;
             font-weight: 700;
             text-transform: capitalize;
@@ -119,24 +121,24 @@
     }
 
     >.MuiPaper-root>div:last-of-type {
+        @include bg-green-opacity-3;
         padding: 1rem;
-        background-color: rgba(0, 129, 96, 0.3);
         border-radius: 10px;
 
         >div {
-            background-color: #e5ffe6;
-
+            background-color: $tableBg;
         }
 
         thead tr th {
-            font-family: 'Zilla Slab', serif;
+            @include zilla-font;
+            position: initial;
             font-size: 16px;
             font-weight: 800;
-            color: #007d75;
+            color: $primaryGreen;
         }
     }
 
     .MuiTableRow-root.MuiTableRow-hover:hover {
-        background-color: rgba(0, 129, 96, 0.3);
+        @include bg-green-opacity-3;
     }
 }
