@@ -35,7 +35,9 @@ section {
 
 footer {
     margin-top: auto;
+    padding: 0 1rem;
     background: url("images/footer-bg.png") repeat, linear-gradient(to top, #A3D8E6, #7EC9DC);
+    text-align: center;
 
     .copyright {
         margin-bottom: 0;
