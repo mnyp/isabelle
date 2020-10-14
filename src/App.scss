@@ -97,15 +97,9 @@ footer {
         }
 
         &::before {
-            @include bell-list;
             height: 10px;
             background-size: 20px 20px;
-        }
-
-        &::after {
-            @include bell-list;
-            height: 15px;
-            background-size: 40px 20px;
+            background-image: radial-gradient(circle at 10px 15px, transparent 12px, #81C9A4 13px);
         }
     }
 }

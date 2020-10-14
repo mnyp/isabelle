@@ -15,7 +15,7 @@ function Home() {
                 <div className="welcome-container">
                     <div className="welcome-container__inner">
                         <h1>Hello there villager!</h1>
-                        <p>This is a personal project of mine, I love all things Animal Crossing and hope that some of you will find it useful.</p>
+                        <p>This is a personal project of mine, I love all things Animal Crossing and built this web app to make it easier to search and filter specific Animal Crossing items e.g. fish, bugs, fossils etc. I hope you find it useful!</p>
                         <h3>Background</h3>
                         <p>I'm a professional Frontend developer and have been for the past 6+ years, in my past time I love to play games and eat delicious foods.</p>
                         <h3>Technology</h3>
