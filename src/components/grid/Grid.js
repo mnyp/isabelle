@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 import '../../App.scss';
 import '../table/Table.scss';
 import './Grid.scss';
@@ -9,7 +9,7 @@ import cjImg from '../../images/modal-icons/CJ.png';
 import flickImg from '../../images/modal-icons/flick.png';
 
 // 3rd Party Imports
-import { Tooltip, OverlayTrigger, Modal, Button, Form, Row, Col } from "react-bootstrap";
+import { Tooltip, OverlayTrigger, Modal, Form, Row, Col } from "react-bootstrap";
 
 function Grid(props) {
     // Modal Events
@@ -63,35 +63,63 @@ function Grid(props) {
         name: "Dec",
     }]);
     const [available, setAvailable] = useState([]);
-    const [hemisphere, setHemisphere] = useState("month-array-northern");
+    const [hemisphere, setHemisphere] = useState("north");
     const [hemisphereText, setHemisphereText] = useState("Northern");
+    const [isHemisphereChecked, setIsHemisphereChecked] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = (data) => {
         setShow(true);
         setModalData(data);
-        setAvailable(data.availability ? data.availability[hemisphere].map((available) => {
-            return available;
-        }) : "");
+        // setAvailable(data.availability ? data.availability[hemisphere].map((available) => {
+        //     return available;
+        // }) : "");
+        handleAvailability(data);
     }
 
-    // WIP
     // Handle Events
-    // const handleHemisphereChange = (hemisphere) => {
-    //     // console.log(event.target.value);
-    //     console.log(hemisphere);
-    //     if (hemisphere === "Northern") {
-    //         setHemisphere("month-array-southern");
-    //         setHemisphereText("Southern");
-    //     } else {
-    //         setHemisphere("month-array-northern");
-    //         setHemisphereText("Northern");
-    //     }
-    // }
+    const handleAvailability = (data) => {
+        setAvailable(data[hemisphere].months_array.map((available) => {
+            return available;
+        }));
+    };
 
-    // // Component Did Mount
-    // useEffect(() => {
-    // }, [hemisphere]);
+    const handleHemisphereChange = (hemisphere) => {
+        setIsHemisphereChecked(!isHemisphereChecked);
+        if (hemisphere === "Northern") {
+            setHemisphere("south");
+            setHemisphereText("Southern");
+        } else {
+            setHemisphere("north");
+            setHemisphereText("Northern");
+        }
+        handleAvailability(modalData);
+    };
+
+    const handleShadowSize = (size) => {
+        switch (size) {
+            case "X-Small":
+                return "--x-small";
+            case "Small":
+                return "--small";
+            case "Medium":
+                return "--medium";
+            case "Medium w/Fin":
+                return "--medium-fin";
+            case "Large":
+                return "--large";
+            case "Large w/Fin":
+                return "--large-fin";
+            case "X-Large":
+                return "--x-large";
+            case "XX-Large":
+                return "--xx-large";
+            case "Long":
+                return "--long";
+            default:
+                return "";
+        };
+    };
 
     return (
         <Col xs={12}>
@@ -99,14 +127,14 @@ function Grid(props) {
                 <div className="grid">
                     {props.data && props.data.length > 1 ?
                         props.data.map((data) => (
-                            <div className="grid__item" onClick={() => handleShow(data)}>
+                            <div key={data.name} className="grid__item" onClick={() => handleShow(data)}>
                                 <OverlayTrigger
                                     placement="top"
                                     overlay={
-                                        <Tooltip className="grid__item__tooltip">{data["name"]["name-EUen"]}</Tooltip>}
+                                        <Tooltip className="grid__item__tooltip">{data["name"]}</Tooltip>}
                                 >
                                     <div className="grid__item__inner">
-                                        <img className="grid__item__img" src={data.icon_uri ? data.icon_uri : data.image_uri} />
+                                        <img className="grid__item__img" src={data.image_url} />
                                     </div>
                                 </OverlayTrigger>
                             </div>
@@ -115,10 +143,10 @@ function Grid(props) {
                                 <OverlayTrigger
                                     placement="top"
                                     overlay={
-                                        <Tooltip className="grid__item__tooltip">{props.data["name"] ? props.data["name"]["name-EUen"] : ""}</Tooltip>}
+                                        <Tooltip className="grid__item__tooltip">{props.data["name"]}</Tooltip>}
                                 >
                                     <div className="grid__item__inner">
-                                        <img className="grid__item__img" src={props.data.icon_uri} />
+                                        <img className="grid__item__img" src={props.data.image_url} />
                                     </div>
                                 </OverlayTrigger>
                             </div>
@@ -126,19 +154,17 @@ function Grid(props) {
                     <Modal className={"modal " + props.type} size={props.type === "fossil" ? "md" : "lg"} show={show} onHide={handleClose}>
                         <Modal.Header className="modal__header" closeButton>
                             <Modal.Title className="modal__title">
-                                {modalData.name ? (
-                                    modalData["name"]["name-EUen"]
-                                ) : ""}
+                                {modalData.name ? (modalData["name"]) : ""}
                             </Modal.Title>
                         </Modal.Header>
                         <Modal.Body className="modal__body">
                             <OverlayTrigger
                                 placement="right"
                                 overlay={
-                                    <Tooltip className="grid__item__tooltip">{modalData["catch-phrase"] ? modalData["catch-phrase"] : modalData["museum-phrase"]}</Tooltip>}
+                                    <Tooltip className="grid__item__tooltip">{modalData["catchphrases"] ? modalData["catchphrases"][0] : modalData["museum-phrase"]}</Tooltip>}
                             >
                                 <div className="modal__body__image">
-                                    <img className="modal__body__image__inner" src={modalData["image_uri"]} />
+                                    <img className="modal__body__image__inner" src={modalData["image_url"]} />
                                 </div>
                             </OverlayTrigger>
                             <div className="modal__body__inner">
@@ -153,15 +179,16 @@ function Grid(props) {
                                             <section className="season">
                                                 <h2>Season</h2>
                                                 {/* WIP */}
-                                                {/* <Form.Check
-                                            type="switch"
-                                            id="custom-switch"
-                                            label={hemisphereText}
-                                            onChange={() => handleHemisphereChange(hemisphereText)}
-                                        /> */}
+                                                <Form.Check
+                                                    type="switch"
+                                                    id="custom-switch"
+                                                    label={hemisphereText}
+                                                    checked={isHemisphereChecked}
+                                                    onChange={() => handleHemisphereChange(hemisphereText)}
+                                                />
                                                 <div className="table">
                                                     {months.map((month) => (
-                                                        <div className="table__item">
+                                                        <div key={month.id} className="table__item">
                                                             <div className={available.includes(month.id) ? "table__item__inner available" : "table__item__inner"}>{month.name}</div>
                                                         </div>
                                                     ))}
@@ -177,19 +204,29 @@ function Grid(props) {
                                                     <Fragment>
                                                         <Col xs={6} sm={3}>
                                                             <h2>Location</h2>
-                                                            <p>{modalData["availability"] ? modalData["availability"]["location"] : ""}</p>
+                                                            <p>{modalData["location"] ? modalData["location"] : ""}</p>
                                                         </Col>
                                                         <Col xs={6} sm={3}>
                                                             <h2>Price</h2>
-                                                            <p><img src={bellsImg} width="20" />{modalData["price"] ? modalData["price"] : ""} (<img src={cjImg} width="20" /><img src={bellsImg} width="20" />{modalData["price-cj"] ? modalData["price-cj"] : ""})</p>
+                                                            <p><img src={bellsImg} width="20" />{modalData["sell_nook"] ? modalData["sell_nook"] : ""} (<img src={cjImg} width="20" /><img src={bellsImg} width="20" />{modalData["sell_cj"] ? modalData["sell_cj"] : ""})</p>
                                                         </Col>
                                                         <Col xs={6} sm={3}>
                                                             <h2>Size</h2>
-                                                            <p>{modalData["shadow"] ? modalData["shadow"] : ""}</p>
+
+                                                            <OverlayTrigger
+                                                                placement="right"
+                                                                overlay={
+                                                                    <Tooltip className="grid__item__tooltip">{modalData["shadow_size"] ? modalData["shadow_size"] : ""}</Tooltip>}
+                                                            >
+                                                                <img className={"shadow shadow" + handleShadowSize(modalData["shadow_size"])} src={modalData["image_url"]} />
+                                                            </OverlayTrigger>
+
+                                            
+                                                            {/* <p>{modalData["shadow_size"] ? modalData["shadow_size"] : ""}</p> */}
                                                         </Col>
                                                         <Col xs={6} sm={3}>
                                                             <h2>Rarity</h2>
-                                                            <p>{modalData["availability"] ? modalData["availability"]["rarity"] : ""}</p>
+                                                            <p>{modalData["rarity"] ? modalData["rarity"] : "N/A"}</p>
                                                         </Col>
                                                     </Fragment>
                                                 )}
